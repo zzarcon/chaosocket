@@ -1,9 +1,8 @@
-const faker = require('faker');
 const fakeSocket = require('./fakesocket');
 const definitions = {
   low: [],
   medium: [],
-  hight: []
+  high: []
 };
 
 const chaosocket = () => {

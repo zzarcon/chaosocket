@@ -2,13 +2,33 @@ const chaos = require('../src');
 
 chaos.register((faker) => {
   return {
-    type: faker.random(['connection', 'message', 'typing']),
-    time: faker.fakeTime,
-    payload: {
-
-    }
+    type: 'connection',
+    time: faker.date.recent(),
+    payload: {}
   };
-}, 'low') //low, medium, hight --> Default medium
+}, 'low');
+chaos.register((faker) => {
+  return {
+    type: 'error',
+    time: faker.date.recent(),
+    payload: {}
+  };
+}, 'low');
+chaos.register((faker) => {
+  return {
+    type: 'typing',
+    time: faker.date.recent(),
+    payload: {}
+  };
+});
+chaos.register((faker) => {
+  return {
+    type: 'message',
+    time: faker.date.recent(),
+    user: faker.random.arrayElement(['zzarcon', 'hector']),
+    payload: {}
+  };
+}, 'high');
 
 chaos.listen();
 

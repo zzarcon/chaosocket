@@ -1,4 +1,22 @@
-module.exports = (definitions, userOptions) => {
+const faker = require('./faker');
+const getPriority = (chaosDefinitions) => {
+  const rand = Math.random();
+  const frequencies = {
+    low: 0.2,
+    medium: 0.4,
+    high: 1
+  };
+  const validFrequencies = Object.keys(frequencies).filter(f => !!chaosDefinitions[f].length);
+
+  return validFrequencies.reduce((prev, current) => {
+    if (prev) return prev;
+
+    return rand < frequencies[current] ? current : null;
+  }, null);
+};
+const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+
+module.exports = (chaosDefinitions, userOptions) => {
   const defaultOptions = {delay: 2000};
   const options = Object.assign({}, defaultOptions, userOptions);
   const eventHandlers = {};
@@ -6,9 +24,8 @@ module.exports = (definitions, userOptions) => {
   const emitRandomEvent = () => {
     if (!eventHandlers.message) return;
 
-    const msg = {
-      name: 'hector'
-    };
+    const priority = getPriority(chaosDefinitions);
+    const msg = randomItem(chaosDefinitions[priority])(faker);
 
     eventHandlers.message.forEach(cb => cb(msg));
   };
