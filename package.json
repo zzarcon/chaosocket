@@ -8,7 +8,8 @@
     "serve": "serve",
     "socket_server": "node demo/server.js",
     "watch": "watchify demo/index.js -o demo/bundle.js -v",
-    "test": "browserify test/index.js | browser-run | tap-spec"
+    "test": "browserify test/index.js | browser-run | tap-spec",
+    "release": "npm version patch && npm publish && git push --tags && git push"
   },
   "repository": {
     "type": "git",
