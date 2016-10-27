@@ -40,8 +40,8 @@ class FakeSocket {
   }
 }
 
-const listen = (definitions) => {
-  runloop = R(definitions);
+const listen = (definitions, options) => {
+  runloop = R(definitions, options);
   window.WebSocket = FakeSocket;
   
   runloop.poll();
@@ -54,5 +54,6 @@ const close = () => {
 
 module.exports = {
   listen,
-  close
+  close,
+  FakeSocket
 };

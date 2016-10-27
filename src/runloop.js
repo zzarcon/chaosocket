@@ -7,12 +7,13 @@ const getPriority = (chaosDefinitions) => {
     high: 1
   };
   const validFrequencies = Object.keys(frequencies).filter(f => !!chaosDefinitions[f].length);
-
-  return validFrequencies.reduce((prev, current) => {
+  const frequency = validFrequencies.reduce((prev, current) => {
     if (prev) return prev;
 
     return rand < frequencies[current] ? current : null;
   }, null);
+
+  return frequency ? frequency : validFrequencies[0];
 };
 const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -32,7 +33,7 @@ module.exports = (chaosDefinitions, userOptions) => {
 
   const poll = () => {
     emitRandomEvent();
-    setInterval(emitRandomEvent, defaultOptions.delay);
+    setInterval(emitRandomEvent, options.delay);
   };
 
   const stop = () => {

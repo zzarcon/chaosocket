@@ -18,8 +18,8 @@ const chaosocket = () => {
     definitions[frequency].push(definition);
   };
 
-  const listen = (url) => {
-    fakeSocket.listen(definitions);
+  const listen = (options) => {
+    fakeSocket.listen(definitions, options);
   };
 
   const close = () => {
@@ -29,7 +29,8 @@ const chaosocket = () => {
   return {
     register,
     listen,
-    close
+    close,
+    FakeSocket: fakeSocket.FakeSocket
   };
 };
 
