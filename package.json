@@ -7,7 +7,7 @@
     "start": "npm-run-all --parallel serve watch styles",
     "styles": "",
     "serve": "serve",
-    "watch": "watchify index.js -o bundle.js -v"
+    "watch": "watchify src/index.js -o bundle.js -v"
   },
   "repository": {
     "type": "git",

@@ -26,22 +26,11 @@ chaos.register((faker) => {
     type: 'message',
     time: faker.date.recent(),
     user: faker.random.arrayElement(['zzarcon', 'hector']),
+    text: faker.random.arrayElement([]),
     payload: {}
   };
 }, 'high');
 
 chaos.listen({
-  delay: 1000
+  delay: 1500
 });
-
-const socket = new WebSocket('ws://0.0.0.0:4000');
-
-socket.onopen = function() {
-  console.log('onOpen', this.readyState);
-};
-
-socket.onmessage = function(e) {
-  const msg = JSON.parse(e.data);
-
-  console.log('onmessage', msg);
-};
