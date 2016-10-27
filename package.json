@@ -10,6 +10,10 @@
     "watch": "watchify demo/index.js -o demo/bundle.js -v",
     "test": "browserify test/index.js | browser-run | tap-spec"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzarcon/chaosocket.git"
+  },
   "author": "zzarcon",
   "license": "MIT",
   "devDependencies": {

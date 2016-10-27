@@ -1,4 +1,4 @@
-# Chaosocket
+# Chaosocket [![Build Status](https://travis-ci.org/zzarcon/chaosocket.svg?branch=master)](https://travis-ci.org/zzarcon/chaosocket)
 > Create websocket chaos and see how well your app performs
 
 ## Defining chaos boundaries

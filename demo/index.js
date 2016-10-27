@@ -30,7 +30,9 @@ chaos.register((faker) => {
   };
 }, 'high');
 
-chaos.listen();
+chaos.listen({
+  delay: 1000
+});
 
 const socket = new WebSocket('ws://0.0.0.0:4000');
 
