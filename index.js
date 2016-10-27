@@ -1,4 +1,4 @@
-const chaos = require('../src');
+const chaos = require('chaosocket');
 
 chaos.register((faker) => {
   return {
@@ -45,15 +45,3 @@ socket.onmessage = function(e) {
 
   console.log('onmessage', msg);
 };
-
-
-// window.onbeforeunload = () => {
-//   const state = socket.readyState;
-//   console.log('onbeforeunload', state);
-
-//   if (state === WebSocket.CLOSING || state === WebSocket.CLOSED) return;
-
-//   socket.close();
-// };
-
-// chaos.close();

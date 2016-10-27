@@ -1,15 +1,13 @@
 {
-  "name": "chaosocket",
+  "name": "chaosocket-demo",
   "version": "0.1.1",
   "description": "Create websocket chaos and see how well your app performs",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm-run-all --parallel serve watch",
+    "start": "npm-run-all --parallel serve watch styles",
+    "styles": "",
     "serve": "serve",
-    "socket_server": "node demo/server.js",
-    "watch": "watchify demo/index.js -o demo/bundle.js -v",
-    "test": "browserify test/index.js | browser-run | tap-spec",
-    "release": "npm version patch && npm publish && git push --tags && git push"
+    "watch": "watchify index.js -o bundle.js -v"
   },
   "repository": {
     "type": "git",
@@ -18,17 +16,10 @@
   "author": "zzarcon",
   "license": "MIT",
   "devDependencies": {
-    "browser-run": "^3.2.1",
     "browserify": "^13.1.0",
-    "express": "^4.14.0",
+    "chaosocket": "^0.1.1",
     "npm-run-all": "^3.1.1",
     "serve": "^1.4.0",
-    "socket.io": "^1.5.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.2",
     "watchify": "^3.7.0"
-  },
-  "dependencies": {
-    "faker": "^3.1.0"
   }
 }
