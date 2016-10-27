@@ -1,6 +1,6 @@
 {
   "name": "chaosocket",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create websocket chaos and see how well your app performs",
   "main": "src/index.js",
   "scripts": {
