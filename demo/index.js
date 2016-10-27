@@ -21,7 +21,7 @@ socket.onopen = function() {
 socket.onmessage = function(e) {
   const msg = JSON.parse(e.data);
 
-  console.log('onmessage', msg)
+  console.log('onmessage', msg);
 };
 
 

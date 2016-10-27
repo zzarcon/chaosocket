@@ -1,6 +1,5 @@
 const faker = require('faker');
 const fakeSocket = require('./fakesocket');
-
 const definitions = {
   low: [],
   medium: [],
@@ -21,13 +20,11 @@ const chaosocket = () => {
   };
 
   const listen = (url) => {
-    //TODO: Overwrite WebSocket here
-    fakeSocket.listen(url);
+    fakeSocket.listen(definitions);
   };
 
   const close = () => {
-    //TODO: Undo WebSocket overwrition here
-    fakeSocket.listen(url);
+    fakeSocket.close();
   };
 
   return {
