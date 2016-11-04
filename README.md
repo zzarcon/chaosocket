@@ -3,7 +3,7 @@
 </p>
 
 # [![Build Status](https://travis-ci.org/zzarcon/chaosocket.svg?branch=master)](https://travis-ci.org/zzarcon/chaosocket) [![npm version](https://badge.fury.io/js/chaosocket.svg)](https://badge.fury.io/js/chaosocket) :bomb: :zap: :boom: :fire: :smiling_imp: 
-> Create websocket chaos and see how well your app performs [DEMO](http://zzarcon.github.io/chaosocket)
+> Mock WebSockets and create chaos [DEMO](http://zzarcon.github.io/chaosocket)
 
 The motivation of this project is nothing but being able to receive predefined socket messages. Why this? usually when integrating and testing web sockets in your app it happen that you have no control over the messages you are getting. This leads to slow iterations, like having to test you app against a real source of messages (production) or not doing it at all...
 

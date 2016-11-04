@@ -1,7 +1,7 @@
 {
   "name": "chaosocket",
   "version": "0.1.1",
-  "description": "Create websocket chaos and see how well your app performs",
+  "description": "Mock WebSockets and create chaos",
   "main": "src/index.js",
   "scripts": {
     "start": "npm-run-all --parallel serve watch",
