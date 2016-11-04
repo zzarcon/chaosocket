@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
 body {
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: 'Open Sans Condensed', sans-serif; }
 
 ul {
   list-style: none; }
@@ -20,35 +22,86 @@ ul {
   margin-top: 10px; }
 
 #messages-payload {
+  position: relative;
+  padding-top: 20px;
   overflow: auto;
   height: calc(100vh - 200px);
-  border: 1px solid;
   margin: 20px;
-  min-width: 200px;
-  max-width: 50vw; }
+  min-width: 500px;
+  max-width: 50vw;
+  border-radius: 3px;
+  color: white;
+  background-color: #827274; }
+  #messages-payload:before {
+    content: "Payload";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+    background-color: #95E0D7;
+    z-index: 2; }
   #messages-payload .payload {
     padding: 10px;
-    border-bottom: 1px solid; }
+    border-bottom: 1px solid #999; }
 
 #chat {
   flex: 1; }
   #chat #messages {
+    position: relative;
+    padding-top: 20px;
     width: 500px;
     float: right;
-    border: 1px solid;
     margin: 20px;
     height: calc(100vh - 200px);
-    overflow: auto; }
+    overflow: auto;
+    border-radius: 3px;
+    background-color: #827274;
+    color: white; }
+    #chat #messages:before {
+      content: "Chat";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: black;
+      background-color: #95E0D7;
+      z-index: 2; }
   #chat .event {
     padding: 10px;
     overflow: hidden;
-    border-bottom: 1px solid; }
+    border-bottom: 1px solid #999;
+    animation: slidedown 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    transform: translateY(-100%);
+    background-color: #827274;
+    position: relative;
+    z-index: 1; }
+    #chat .event:last-child {
+      z-index: 0; }
   #chat .avatar {
     border-radius: 100%;
-    border: 1px solid;
+    border: 1px solid #999;
     width: 50px;
     height: 50px; }
   #chat .message.left .avatar {
     float: left; }
+  #chat .message.left .text {
+    padding-left: 60px; }
   #chat .message.right .avatar {
     float: right; }
+  #chat .message.right .text {
+    text-align: right;
+    padding-right: 60px; }
+  #chat .disconnection {
+    text-align: right; }
+  #chat .username {
+    color: #A7A5E2;
+    text-transform: capitalize; }
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(0); } }

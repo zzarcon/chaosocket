@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+$border-color: #999;
+$bg-color: #827274;
+$pink: #A7A5E2;
+
+@mixin box-title($title) {
+  position: relative;
+  padding-top: 20px; 
+
+  &:before{
+    content: $title;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+    background-color: #95E0D7;
+    z-index: 2;
+  }
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -6,6 +29,7 @@
 
 body{
   overflow: hidden;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 ul {
   list-style: none;
@@ -23,16 +47,19 @@ ul {
 }
 
 #messages-payload{
+  @include box-title('Payload');
   overflow: auto;
   height: calc(100vh - 200px);
-  border: 1px solid;
   margin: 20px;
-  min-width: 200px;
+  min-width: 500px;
   max-width: 50vw;
+  border-radius: 3px;
+  color: white;
+  background-color: $bg-color;
 
   .payload{
     padding: 10px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid $border-color;
   }
 }
 
@@ -40,23 +67,36 @@ ul {
   flex: 1;
 
   #messages{
+    @include box-title('Chat');
     width: 500px;
     float: right;
-    border: 1px solid;
     margin: 20px;
     height: calc(100vh - 200px);
     overflow: auto;
+    border-radius: 3px;
+    background-color: $bg-color;
+    color: white;
   }
 
   .event{
     padding: 10px;
     overflow: hidden;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid $border-color;
+    animation: slidedown .6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    // transition: transform 1s;
+    transform: translateY(-100%);
+    background-color: $bg-color;
+    position: relative;
+    z-index: 1;
+
+    &:last-child{
+      z-index: 0;
+    }
   }
 
   .avatar{
     border-radius: 100%;
-    border: 1px solid;
+    border: 1px solid $border-color;
     width: 50px;
     height: 50px;
   }
@@ -66,12 +106,37 @@ ul {
       .avatar{
         float: left;
       }
+      .text{
+        padding-left: 60px;
+      }
     }
 
     &.right{
       .avatar{
         float: right;
       }
+      .text{
+        text-align: right;        
+        padding-right: 60px;
+      }
     }
+  }
+  
+  .disconnection{
+    text-align: right;
+  }
+
+  .username{
+    color: $pink;
+    text-transform: capitalize;
+  }
+}
+
+@keyframes slidedown {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
   }
 }

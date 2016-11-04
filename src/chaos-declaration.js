@@ -11,10 +11,10 @@ chaos.register((faker) => {
 }, 'low');
 chaos.register((faker) => {
   return {
-    type: 'error',
+    type: 'disconnection',
     time: faker.date.recent(),
     payload: {
-
+      user: faker.random.arrayElement(['zzarcon', 'hector'])
     }
   };
 }, 'low');

@@ -95,6 +95,10 @@ const appendMessagePayload = payload => {
     dom.payload.appendChild(msg);
   }
 
+  scrollToBottom();
+};
+
+const scrollToBottom = () => {
   dom.messages.scrollTop = dom.messages.scrollHeight;
 };
 
