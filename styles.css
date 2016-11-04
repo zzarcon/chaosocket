@@ -17,7 +17,8 @@ ul {
 #logo {
   background: url("logo.png") no-repeat center;
   height: 150px;
-  width: 100%;
+  width: 380px;
+  margin: 0 auto;
   background-size: contain;
   margin-top: 10px;
   position: relative; }
