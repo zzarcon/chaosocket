@@ -4,30 +4,37 @@ chaos.register((faker) => {
   return {
     type: 'connection',
     time: faker.date.recent(),
-    payload: {}
+    payload: {
+      user: faker.random.arrayElement(['zzarcon', 'hector'])
+    }
   };
 }, 'low');
 chaos.register((faker) => {
   return {
     type: 'error',
     time: faker.date.recent(),
-    payload: {}
+    payload: {
+
+    }
   };
 }, 'low');
 chaos.register((faker) => {
   return {
     type: 'typing',
     time: faker.date.recent(),
-    payload: {}
+    payload: {
+      user: faker.random.arrayElement(['zzarcon', 'hector'])
+    }
   };
 });
 chaos.register((faker) => {
   return {
     type: 'message',
     time: faker.date.recent(),
-    user: faker.random.arrayElement(['zzarcon', 'hector']),
-    text: faker.random.arrayElement([]),
-    payload: {}
+    payload: {
+      user: faker.random.arrayElement([1, 2]),
+      text: faker.lorem.sentence()
+    }
   };
 }, 'high');
 

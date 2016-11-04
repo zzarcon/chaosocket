@@ -9,64 +9,76 @@ const connect = () => {
   const socket = new WebSocket('ws://0.0.0.0:4000');
 
   socket.onmessage = function(e) {
-    const msg = JSON.parse(e.data);
-    const payload = msg.payload;
-    const type = msg.type;
+    const event = JSON.parse(e.data);
+    const type = event.type;
 
-    console.log('onmessage', msg);
+    console.log('onmessage', event);
 
     switch (type) {
       case 'connection':
-        renderConnection(payload);
+        renderConnection(event);
         break;
 
       case 'typing':
-        renderTyping(payload);
+        renderTyping(event);
         break;
 
       case 'message':
-        renderMessage(payload);
+        renderMessage(event);
         break;
 
       case 'disconnection':
-        renderDisconnection(payload);
+        renderDisconnection(event);
         break;
     }
   };
 };
 
-const renderConnection = payload => {
+const renderConnection = event => {
+  const payload = event.payload;
+
   appendEvent(`
     <span class="username">${payload.user}</span> joined the chat
   `, 'connection');
-  appendMessagePayload(payload);
+  appendMessagePayload(event);
 };
 
-const renderTyping = payload => {
+const renderTyping = event => {
+  const payload = event.payload;
+
   appendEvent(`
     <span class="username">${payload.user}</span> is typing...
   `, 'typing');
-  appendMessagePayload(payload);
+  appendMessagePayload(event);
 };
 
-const renderMessage = payload => {
+const renderMessage = event => {
+  const payload = event.payload;
+  const position = payload.user == 1 ? 'left' : 'right';
+
   appendEvent(`
-    
-  `, 'message');
-  appendMessagePayload(payload);
+    <img class="avatar" src="https://robohash.org/${payload.user}.png?size=50x50">    
+    <div class="text">${payload.text}</div>
+  `, ['message', position]);
+  appendMessagePayload(event);
 };
 
-const renderDisconnection = payload => {
+const renderDisconnection = event => {
+  const payload = event.payload;
+
   appendEvent(`
     <span class="username">${payload.user}</span> disconnected.
   `, 'disconnection');
-  appendMessagePayload(payload);
+  appendMessagePayload(event);
 };
 
 const appendEvent = (content, classes) => {
-  const msg = document.createElement('div');
+  classes = Array.isArray(classes) ? classes : [classes];
+  classes.push('event');
 
-  msg.classList.add('event', ...classes);
+  const msg = document.createElement('div');
+  
+  msg.classList.add(...classes);
   msg.innerHTML = content;
   dom.messages.appendChild(msg);
 };
@@ -76,7 +88,14 @@ const appendMessagePayload = payload => {
 
   msg.classList.add('payload');
   msg.innerHTML = JSON.stringify(payload, null, 2);
-  dom.payload.appendChild(msg);
+  
+  if (dom.payload.children.length) {
+    dom.payload.insertBefore(msg, dom.payload.children[0]);
+  } else {
+    dom.payload.appendChild(msg);
+  }
+
+  dom.messages.scrollTop = dom.messages.scrollHeight;
 };
 
 connect();

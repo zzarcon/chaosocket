@@ -4,6 +4,63 @@
   box-sizing: border-box;
 }
 
+body{
+  display: flex;  
+  overflow: hidden;
+}
 ul {
   list-style: none;
+}
+
+#messages-payload{
+  overflow: auto;
+  height: calc(100vh - 40px);
+  border: 1px solid;
+  margin: 20px;
+  max-width: 50vw;
+
+  .payload{
+    padding: 10px;
+    border-bottom: 1px solid;
+  }
+}
+
+#chat{
+  flex: 1;
+
+  #messages{
+    width: 500px;
+    float: right;
+    border: 1px solid;
+    margin: 20px;
+    height: calc(100vh - 40px);
+    overflow: auto;
+  }
+
+  .event{
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid;
+  }
+
+  .avatar{
+    border-radius: 100%;
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+  }
+
+  .message{
+    &.left{
+      .avatar{
+        float: left;
+      }
+    }
+
+    &.right{
+      .avatar{
+        float: right;
+      }
+    }
+  }
 }
