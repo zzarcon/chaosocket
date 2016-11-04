@@ -19,7 +19,13 @@ ul {
   height: 150px;
   width: 100%;
   background-size: contain;
-  margin-top: 10px; }
+  margin-top: 10px;
+  position: relative; }
+  #logo iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: 90px; }
 
 #messages-payload {
   position: relative;
