@@ -99,9 +99,14 @@ chaos.register((faker) => {
 You can find all Faker methods here https://github.com/marak/Faker.js/#api-methods
 
 ## Demo :rocket:
-TODO: Add screenshot
 
-[zzarcon.github.io/chaosocket](http://zzarcon.github.io/chaosocket)
+<p align="center">
+  Just a simple chat using the library
+  <img src="demo/demo2.gif" width="800">
+</p>
+
+* Live demo [zzarcon.github.io/chaosocket](http://zzarcon.github.io/chaosocket)
+* Demo code https://github.com/zzarcon/chaosocket/tree/gh-pages
 
 ## Installation :wrench:
 
