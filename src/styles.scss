@@ -5,18 +5,29 @@
 }
 
 body{
-  display: flex;  
   overflow: hidden;
 }
 ul {
   list-style: none;
 }
 
+.app-wrapper{
+  display: flex;  
+}
+#logo{
+  background: url('logo.png') no-repeat center;
+  height: 150px;
+  width: 100%;
+  background-size: contain;
+  margin-top: 10px;
+}
+
 #messages-payload{
   overflow: auto;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 200px);
   border: 1px solid;
   margin: 20px;
+  min-width: 200px;
   max-width: 50vw;
 
   .payload{
@@ -33,7 +44,7 @@ ul {
     float: right;
     border: 1px solid;
     margin: 20px;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 200px);
     overflow: auto;
   }
 
